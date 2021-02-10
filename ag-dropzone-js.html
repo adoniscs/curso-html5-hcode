@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atributo global dropzone</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      box-sizing: content-box;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: chartreuse;
+      margin: 5px;
+      margin: 5px 5px;
+      display: inline-block;
+    }
+
+    .drop {
+      min-width: 200px;
+      min-height: 200px;
+      border: 1px solid crimson;
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box1" class="box" draggable="true"></div>
+  <div id="box2" class="box" draggable="true"></div>
+
+  <div class="drop" dropzone="copy"></div>
+
+  <script>
+    const boxes = document.querySelectorAll('.box');
+    const dropZone = document.querySelector('.drop');
+
+    boxes.forEach(boxEl => {
+
+      boxEl.addEventListener('dragstart', event => {
+        event.dataTransfer.setData('Text', event.target.id)
+
+        console.log(event.target.id);
+      });
+    });
+
+    dropZone.addEventListener('dragover', event => {
+      event.preventDefault();
+    })
+
+    dropZone.addEventListener('drop', event => {
+
+      const id = event.dataTransfer.getData('Text');
+      const element = document.getElementById(id);
+
+      event.target.appendChild(element);
+
+      console.log(`A caixa que foi pega foi a ${event.dataTransfer.getData('Text')}`);
+    })
+  </script>
+</body>
+
+</html>
