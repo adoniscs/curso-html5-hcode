@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atributo global - Data</title>
+</head>
+
+<body>
+  <ul>
+    <li data-id="1" data-email="adonisteste@gmail.com">Adonis Cipriano</li>
+    <li data-id="2" data-email="adonisteste234@gmail.com">Adonis Silveira</li>
+  </ul>
+
+  <script>
+    let test = document.querySelectorAll('li').forEach(liEl => {
+
+      let result = liEl.dataset.email;
+      console.log(result)
+
+    });
+  </script>
+</body>
+
+</html>
